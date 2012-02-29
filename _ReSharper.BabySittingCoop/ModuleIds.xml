@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="0C8BE5B8-26CE-42BA-BA91-5B0B895F3983" ModuleId="BabySittingCoop.Migrations" />
+  <Module PersistentId="2B00E592-4319-4AFA-B697-E495BF20683B" ModuleId="BabySittingCoop.Web" />
+</Modules>
