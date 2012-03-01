@@ -91,11 +91,13 @@
     <Compile Include="Configuration\MappingConfiguration.cs" />
     <Compile Include="Configuration\MappingConventions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Filters\TransactionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BabySittingProvidedCountView.cs" />
+    <Compile Include="Models\NavigationOption.cs" />
     <Compile Include="Plumbing\ControllersInstaller.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,6 +271,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Recommendations.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Navigation.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

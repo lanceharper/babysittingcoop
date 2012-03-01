@@ -1,0 +1,13 @@
+﻿@{
+    Layout = null;
+}
+@using BabySittingCoop.Web.Models
+@model NavigationOption[]
+<ul class="nav nav-list">
+    <li class="nav-header">Menu</li>
+    @foreach (var option in Model)
+    {   
+    <li @{ if (option.IsActive){ <text>class="active"</text>} }>@Html.ActionLink(option.Text, option.ActionName, option.ControllerName)</li>
+       
+    }
+</ul>

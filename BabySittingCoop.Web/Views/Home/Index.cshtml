@@ -7,10 +7,10 @@
 </table>
 <div id="babysitting-pager">
 </div>
-@section Menu
-{@*
-    @{Html.RenderPartial("Menub", "Index");}                    
-*@}
+@section Navigation
+{
+    @{Html.RenderAction( "Menu", "Navigation", new { active = "Rankings" });}
+}
 @section Scripts
 {
 <script type="text/javascript">

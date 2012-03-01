@@ -18,9 +18,9 @@
 </div>
 <table id="recommendation-list">
 </table>
-@section Menu
+@section Navigation
 {
-    @*@{Html.RenderPartial("Menub", "Recommendations");}*@                    
+    @{Html.RenderAction( "Menu", "Navigation", new { active = "Recommendations" });}
 }
 
 @section Scripts
