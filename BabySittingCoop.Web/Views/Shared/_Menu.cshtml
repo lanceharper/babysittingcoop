@@ -1,0 +1,18 @@
+﻿@model string           
+@{
+    var dict = new Dictionary<string, string> { { "Index", "Rankings" }, { "Recommendations", "Recommendations" } };
+}
+<ul class="nav nav-list">
+    <li class="nav-header">Menu</li>
+    @foreach (var key in dict.Keys)
+    {
+        if (key == Model)
+        { 
+        <li class="active"><a href="@Url.Action(key, "Home")">@dict[key]</a></li>
+        }
+        else
+        {
+        <li>@Html.ActionLink(dict[key], key, "Home")</li>
+        }
+    }
+</ul>

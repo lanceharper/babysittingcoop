@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <sql-query name="BabySitterRecommendations">
+        <return-scalar column="BabySitterId" type="Int32"/>
+        <return-scalar column="Name" type="String"/>
+        <return-scalar column="ProvidedCount" type="Int32"/>
+        exec usp_BabySitterRecommendations :parentId
+    </sql-query>
+</hibernate-mapping>

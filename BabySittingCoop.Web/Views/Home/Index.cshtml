@@ -1,5 +1,45 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Babysitting Point Rankings";
 }
+<h2>
+    Babysitting Point Rankings</h2>
+<table id="babysitting-list">
+</table>
+<div id="babysitting-pager">
+</div>
+@section Menu
+{
+    @{Html.RenderPartial("_Menu", "Index");}                    
+}
+@section Scripts
+{
+<script type="text/javascript">
+    $(function () {
+        $("#babysitting-list").jqGrid({
+            url: '@Url.Action("GetBabySittingPoints")',
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['', 'Name', 'Provided Points', 'Receiver Points', 'Total Points'],
+            colModel: [
+                    { name: 'Id', index: 'Id', align: 'left', sortable: false, hidden: true },
+                    { name: 'Name', index: 'Name', align: 'center' },
+                    { name: 'ProvidedPoints', index: 'ProvidedPoints', align: 'right' },
+                    { name: 'ReceiverPoints', index: 'ReceiverPoints', align: 'right' },
+                    { name: 'TotalPoints', index: 'TotalPoints', align: 'right' }
+                ],
+            autowidth: true,
+            caption: '',
+            pager: $("#babysitting-pager"),
+            rowNum: '20',
+            viewrecords: true,
+            height: '100%',
+            sortname: 'TotalPoints',
+            sortorder: "desc",
+            postData: {
 
-<h2>Index</h2>
+            }
+        });
+
+    });
+    </script>
+}

@@ -1,75 +1,51 @@
 body
 {
-    font-size: .85em;
-    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    padding-top: 60px;
+    padding-bottom: 40px;
 }
-
-header,
-footer,
-nav,
-section {
-    display: block;
-}
-
-/* Styles for basic forms
------------------------------------------------------------*/
-
-fieldset 
+.sidebar-nav
 {
-    border:1px solid #ddd;
-    padding:0 1.4em 1.4em 1.4em;
-    margin:0 0 1.5em 0;
+    padding: 9px 0;
 }
 
-legend 
+.row-fluid > .sidebar-nav
 {
-    font-size:1.2em;
-    font-weight: bold;
+    position: relative;
+    top: 0;
+    left: auto;
+    width: 220px;
 }
 
-textarea 
+.left
 {
-    min-height: 75px;
+    float: left;
 }
 
-.editor-label 
+.right
 {
-    margin: 1em 0 0 0;
+    float: right;
 }
-
-.editor-field 
+.fixed-fluid
 {
-    margin:0.5em 0 0 0;
+    margin-left: 240px;
 }
-
-
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error
+.fluid-fixed
 {
-    color: #ff0000;
+    margin-right: 240px;
+    margin-left: auto !important;
 }
-
-.field-validation-valid
+.fixed-fixed
 {
-    display: none;
+    margin: 0 240px;
 }
-
-.input-validation-error
+#event-list
 {
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
+    overflow-x: hidden;
 }
-
-.validation-summary-errors
+#map
 {
-    font-weight: bold;
-    color: #ff0000;
-}
-
-.validation-summary-valid
-{
-    display: none;
+    height: 500px;
+    border: 1px inset #AAA;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
 }
