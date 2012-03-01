@@ -74,7 +74,7 @@ LEFT JOIN
 	 GROUP BY SittingProviderId) providers ON bs.BabySitterId = providers.SittingProviderId
 LEFT JOIN 
 	(SELECT SittingReceiverId, 
-			SUM(CONVERT(INTEGER, [Duration]/36000000000) * bst.ChildrenWatched) AS 'ReceiverPoints'
+			-1 * SUM(CONVERT(INTEGER, [Duration]/36000000000) * bst.ChildrenWatched) AS 'ReceiverPoints'
 	 FROM BabySittingTransaction bst
 	 GROUP BY SittingReceiverId) receiver ON bs.BabySitterId = receiver.SittingReceiverId
 
@@ -86,7 +86,10 @@ GO
 USE [dbd33fd9a3b7b1440e8f15a0060108aeda]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_BabySitterRecommendations]    Script Date: 02/29/2012 23:13:19 ******/
+USE [dbd33fd9a3b7b1440e8f15a0060108aeda]
+GO
+
+/****** Object:  StoredProcedure [dbo].[usp_BabySitterRecommendations]    Script Date: 03/01/2012 10:10:22 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -98,7 +101,7 @@ GO
 -- Create date: 2012/02/29
 -- Description:	Get the counts of babysitters who have not yet been used.
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_BabySitterRecommendations]
+ALTER PROCEDURE [dbo].[usp_BabySitterRecommendations]
 	-- Add the parameters for the stored procedure here
 	@parentId int
 	
@@ -107,7 +110,7 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-SELECT 
+SELECT TOP 10
     bs.BabySitterId
    ,Name
    ,COALESCE(providers.ProvidedCount, 0) AS 'ProvidedCount'
@@ -122,11 +125,12 @@ LEFT JOIN
 	(SELECT DISTINCT SittingProviderId
 	 FROM BabySittingTransaction bst
 	 WHERE SittingReceiverId = @parentId) priorProviders ON bs.BabySitterId = priorProviders.SittingProviderId
-WHERE priorProviders.SittingProviderId IS NULL
+WHERE priorProviders.SittingProviderId IS NULL -- Don't recommend anyone who has been used before by parent.
+and bs.BabySitterId <> @parentId -- Can't babysit for yourself.
+ORDER BY COALESCE(providers.ProvidedCount, 0) DESC
 END
 
 GO
-
 
 
 
