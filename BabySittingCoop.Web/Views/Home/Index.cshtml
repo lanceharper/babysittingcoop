@@ -3,6 +3,24 @@
 }
 <h2>
     Babysitting Point Rankings</h2>
+<div class="well">
+    <h3>
+        Scoring</h3>
+    <dl>
+        <dt>Provider Points:</dt>
+        <dd>
+            A parent receives one point for every hour they watch someone else’s child. Thus,
+            if I watched my friend’s 3 children for two hours, my friend would give me 6 points.</dd>
+        <dt>Receiver Points:</dt>
+        <dd>
+            A parent gives one point for every hour their child is watched by someone else.
+            Thus, if my 2 children were tended by my friend for 4 hours, I would give my friend
+            8 points.</dd>
+        <dt>Total Points:</dt>
+        <dd>
+            The sum of Provider Points and Receiver Points plus five points for participating.</dd>
+    </dl>
+</div>
 <table id="babysitting-list">
 </table>
 <div id="babysitting-pager">
@@ -16,9 +34,9 @@
 @section Scripts
 {
     <script type="text/javascript">
-    var config = {
-        listUrl: '@Url.Action("GetBabySittingPoints")'
-    }
+        var config = {
+            listUrl: '@Url.Action("GetBabySittingPoints")'
+        }
     </script>
     <script src="@Url.Content("~/Scripts/rankings.js")" type="text/javascript"></script>
 }
