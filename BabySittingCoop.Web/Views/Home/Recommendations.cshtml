@@ -7,13 +7,14 @@
 <h2>
     Babysitting Recommendations</h2>
 <div class="controls">
-    <label for="babysitters">Choose Babysitter
+    <label for="babysitters">
+        Choose Babysitter
     </label>
     <select id="babysitters">
-    @foreach (var babysitter in ViewBag.BabySitters)
-    {
-        <option value="@babysitter.Id">@babysitter.Name</option>
-    }
+        @foreach (var babysitter in ViewBag.BabySitters)
+        {
+            <option value="@babysitter.Id">@babysitter.Name</option>
+        }
     </select>
 </div>
 <table id="recommendation-list">
@@ -24,37 +25,12 @@
     <li>@Html.ActionLink("Rankings", "Index", "Home")</li>
     <li class="active">@Html.ActionLink("Recommendations", "Recommendations", "Home")</li>
 }
-
 @section Scripts
 {
     <script type="text/javascript">
-        $(function () {
-            $("#recommendation-list").jqGrid({
-                url: '@Url.Action("BabySitterRecommendations")',
-                datatype: 'json',
-                mtype: 'POST',
-                colNames: ['', 'Name', 'Babysitting Jobs Provided'],
-                colModel: [
-                    { name: 'Id', index: 'Id', align: 'left', sortable: false, hidden: true },
-                    { name: 'Name', index: 'Name', align: 'center', sortable: false },
-                    { name: 'ProvidedCount', index: 'ProvidedCount', align: 'right', sortable: false }
-                ],
-                autowidth: true,
-                caption: '',
-                rowNum: '20',
-                viewrecords: true,
-                height: '100%',
-                sortname: 'ProvidedCount',
-                sortorder: "desc",
-                postData: {
-                    id: function () { return $("#babysitters").val(); }
-                }
-            });
-
-            $("#babysitters").change(function () {
-                
-                $("#recommendation-list").trigger("reloadGrid");
-            });
-        });
+        var config = {
+            listUrl: '@Url.Action("BabySitterRecommendations")'
+        }
     </script>
+    <script src="@Url.Content("~/Scripts/recommendations.js")" type="text/javascript"></script>
 }
