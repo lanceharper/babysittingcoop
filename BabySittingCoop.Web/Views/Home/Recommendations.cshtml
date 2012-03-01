@@ -20,7 +20,9 @@
 </table>
 @section Navigation
 {
-    @{Html.RenderAction( "Menu", "Navigation", new { active = "Recommendations" });}
+    <li class="nav-header">Menu</li>
+    <li>@Html.ActionLink("Rankings", "Index", "Home")</li>
+    <li class="active">@Html.ActionLink("Recommendations", "Recommendations", "Home")</li>
 }
 
 @section Scripts

@@ -9,7 +9,9 @@
 </div>
 @section Navigation
 {
-    @{Html.RenderAction( "Menu", "Navigation", new { active = "Rankings" });}
+    <li class="nav-header">Menu</li>
+    <li class="active">@Html.ActionLink("Rankings", "Index", "Home")</li>
+    <li>@Html.ActionLink("Recommendations", "Recommendations", "Home")</li>
 }
 @section Scripts
 {
